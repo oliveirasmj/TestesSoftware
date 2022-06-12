@@ -12,40 +12,45 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Food {
+public class Client {
 
     @JsonProperty("id")
     private Integer id;
-    @JsonProperty("name")
-    private String name;
-    @JsonProperty("type")
-    private String type;
-    @JsonProperty("quantity")
-    private Integer quantity;
-    @JsonProperty("barcode")
-    private Integer barcode;
-    @JsonProperty("expiryDate")
+    @JsonProperty("firstName")
+    private String firstName;
+    @JsonProperty("lastName")
+    private String lastName;
+    @JsonProperty("address")
+    private String address;
+    @JsonProperty("postalCode")
+    private String postalCode;
+    @JsonProperty("city")
+    private String city;
+    @JsonProperty("country")
+    private String country;
+    @JsonProperty("phoneNumber")
+    private Integer phoneNumber;
+    @JsonProperty("nif")
+    private Integer nif;
+
+    @JsonProperty("birthDate")
     @JsonFormat(pattern = "yyyy-MM-dd")
     @JsonDeserialize(using = LocalDateDeserializer.class)
     @JsonSerialize(using = LocalDateSerializer.class)
-    private LocalDate expiryDate;
-    @JsonProperty("insertedDate")
+    private Integer birthDate;
+
+    @JsonProperty("clientDate")
     @JsonFormat(pattern = "yyyy-MM-dd")
     @JsonDeserialize(using = LocalDateDeserializer.class)
     @JsonSerialize(using = LocalDateSerializer.class)
-    private LocalDate insertedDate;
-    @JsonProperty("openedDate")
-    @JsonFormat(pattern = "yyyy-MM-dd")
-    @JsonDeserialize(using = LocalDateDeserializer.class)
-    @JsonSerialize(using = LocalDateSerializer.class)
-    private LocalDate openedDate;
-    @JsonProperty("expiryDaysOpened")
-    private Integer expiryDaysOpened;
-    @JsonProperty("openedExpiryDate")
-    private LocalDate openedExpiryDate;
+    private String clientDate;
+
+    @JsonProperty("vehicles")
+    private List<Vehicle> vehicles;
 }
