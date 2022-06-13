@@ -6,7 +6,10 @@ import api.mappings.Client;
 import api.mappings.Vehicle;
 import api.retrofit.RetrofitBuilder;
 import lombok.SneakyThrows;
+import retrofit2.Call;
 import retrofit2.Response;
+
+import java.util.List;
 
 public class Vehicles {
 
@@ -15,5 +18,15 @@ public class Vehicles {
     @SneakyThrows
     public static Response<Vehicle> getVehicleById(Integer vehicleId) {
         return vehicleCalls.getVehicleById(vehicleId).execute();
+    }
+
+    @SneakyThrows
+    public static Call<List<Vehicle>> getVehicle() {
+        return vehicleCalls.getVehicle();
+    }
+
+    @SneakyThrows
+    public static Response<Vehicle> createVehicle(Vehicle vehicle) {
+        return vehicleCalls.createVehicle(vehicle).execute();
     }
 }

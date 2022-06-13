@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.jetbrains.annotations.Nullable;
 
 @Data
 @NoArgsConstructor
@@ -41,5 +42,9 @@ public class Vehicle {
                 ", plate='" + plate + '\'' +
                 ", active=" + active +
                 '}';
+    }
+
+    public Vehicle(Integer id) {
+        this.id = id;
     }
 }

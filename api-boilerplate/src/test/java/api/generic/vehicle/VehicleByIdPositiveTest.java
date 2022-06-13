@@ -10,7 +10,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.notNullValue;
 
-public class VehiclePositiveTest {
+public class VehicleByIdPositiveTest {
 
     @Test(description = "Get vehicle by Id")
     public void getVehicleByIdTest() {

@@ -11,16 +11,15 @@ import java.util.Collections;
 import java.util.List;
 
 import static api.retrofit.Client.Clients.getClientById;
-import static api.retrofit.Client.Vehicles.getVehicleById;
 import static api.validators.ResponseValidator.assertOk;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.notNullValue;
 
-public class ClientPositiveTest {
+public class ClientByIdPositiveTest {
 
     @Test(description = "Get client by Id")
-    public void getVehicleByIdTest() {
+    public void getClientByIdTest() {
 
         Integer id = 1;
         String firstName = "Afonso";
