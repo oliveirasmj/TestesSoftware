@@ -43,13 +43,13 @@ public class Client {
     @JsonFormat(pattern = "yyyy-MM-dd")
     @JsonDeserialize(using = LocalDateDeserializer.class)
     @JsonSerialize(using = LocalDateSerializer.class)
-    private Integer birthDate;
+    private LocalDate birthDate;
 
     @JsonProperty("clientDate")
     @JsonFormat(pattern = "yyyy-MM-dd")
     @JsonDeserialize(using = LocalDateDeserializer.class)
     @JsonSerialize(using = LocalDateSerializer.class)
-    private String clientDate;
+    private LocalDate clientDate;
 
     @JsonProperty("vehicles")
     private List<Vehicle> vehicles;
