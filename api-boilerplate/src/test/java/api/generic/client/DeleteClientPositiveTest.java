@@ -1,27 +1,22 @@
 package api.generic.client;
 
 import api.mappings.Client;
-import api.mappings.Vehicle;
 import org.testng.annotations.Test;
 import retrofit2.Response;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
-import static api.retrofit.Client.Clients.createClient;
-import static api.retrofit.Client.Clients.getClientById;
+import static api.retrofit.Client.Clients.*;
 import static api.validators.ResponseValidator.assertCreated;
 import static api.validators.ResponseValidator.assertOk;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.is;
-import static org.hamcrest.Matchers.notNullValue;
+import static org.hamcrest.Matchers.*;
 
-public class CreateClientPositiveTest {
 
-    @Test(description = "create client with success")
-    public void createClientTest() {
+public class DeleteClientPositiveTest {
+
+    @Test(description = "Delete client by Id")
+    public void deleteClientTest() {
 
         String firstName = "Miguel";
         String lastName = "Oliveira";
@@ -59,19 +54,11 @@ public class CreateClientPositiveTest {
         assertOk(response2);
         assertThat("Body should not be null", response2.body(), notNullValue());
 
-        //Criar cliente 2 com os dados da BD
-        Client client2 = response.body();
 
-        assertThat(client2.getId(), is(client.getId()));
-        assertThat(client2.getFirstName(), is(client.getFirstName()));
-        assertThat(client2.getLastName(), is(client.getLastName()));
-        assertThat(client2.getAddress(), is(client.getAddress()));
-        assertThat(client2.getPostalCode(), is(client.getPostalCode()));
-        assertThat(client2.getCity(), is(client.getCity()));
-        assertThat(client2.getCountry(), is(client.getCountry()));
-        assertThat(client2.getPhoneNumber(), is(client.getPhoneNumber()));
-        assertThat(client2.getNif(), is(client.getNif()));
-        assertThat(client2.getBirthDate(), is(client.getBirthDate()));
-        assertThat(client2.getClientDate(), is(client.getClientDate()));
+        //Eliminar cliente
+        //System.out.println(response.body().getId());
+        Response<Client> response3 = deleteClient(response.body().getId());
+        //assertOk(response3);
+        assertThat("Body be null", response3.body(), nullValue()); //tem de ser nulo
     }
 }

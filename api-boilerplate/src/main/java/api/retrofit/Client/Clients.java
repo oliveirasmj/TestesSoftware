@@ -27,4 +27,14 @@ public class Clients {
     public static Response<Client> createClient(Client client) {
         return clientCalls.createClient(client).execute();
     }
+
+    @SneakyThrows
+    public static Response<Client> deleteClient(Integer clientId) {
+        return clientCalls.deleteClient(clientId).execute();
+    }
+
+    @SneakyThrows
+    public static Response<Client> updateClient(Integer clientId, Client client) {
+        return clientCalls.updateClient(clientId, client).execute();
+    }
 }
