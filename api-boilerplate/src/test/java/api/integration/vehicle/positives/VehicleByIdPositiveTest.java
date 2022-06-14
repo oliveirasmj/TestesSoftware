@@ -1,4 +1,4 @@
-package api.generic.vehicle;
+package api.integration.vehicle.positives;
 
 import api.mappings.Vehicle;
 import org.testng.annotations.Test;

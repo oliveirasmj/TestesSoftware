@@ -1,20 +1,13 @@
-package api.generic.client;
+package api.integration.client.negatives;
 
 import api.mappings.Client;
-import api.mappings.Vehicle;
 import api.mappings.generic.ErrorResponse;
 import org.testng.annotations.Test;
 import retrofit2.Response;
 
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
 import static api.retrofit.Client.Clients.getClientById;
 import static api.retrofit.Client.Errors.getErrorsResponse;
 import static api.validators.ResponseValidator.assertNotFound;
-import static api.validators.ResponseValidator.assertOk;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.notNullValue;

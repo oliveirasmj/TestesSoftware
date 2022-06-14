@@ -1,14 +1,9 @@
-package api.generic.vehicle;
+package api.integration.vehicle.positives;
 
-import api.mappings.Client;
 import api.mappings.Vehicle;
 import org.testng.annotations.Test;
 import retrofit2.Response;
 
-import java.time.LocalDate;
-
-import static api.retrofit.Client.Clients.createClient;
-import static api.retrofit.Client.Clients.getClientById;
 import static api.retrofit.Client.Vehicles.createVehicle;
 import static api.retrofit.Client.Vehicles.getVehicleById;
 import static api.validators.ResponseValidator.assertCreated;

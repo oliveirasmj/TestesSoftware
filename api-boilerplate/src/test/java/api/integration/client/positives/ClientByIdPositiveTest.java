@@ -1,4 +1,4 @@
-package api.generic.client;
+package api.integration.client.positives;
 
 import api.mappings.Client;
 import api.mappings.Vehicle;

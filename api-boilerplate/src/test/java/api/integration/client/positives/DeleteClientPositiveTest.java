@@ -1,4 +1,4 @@
-package api.generic.client;
+package api.integration.client.positives;
 
 import api.mappings.Client;
 import org.testng.annotations.Test;
@@ -10,15 +10,13 @@ import static api.retrofit.Client.Clients.*;
 import static api.validators.ResponseValidator.assertCreated;
 import static api.validators.ResponseValidator.assertOk;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.is;
-import static org.hamcrest.Matchers.notNullValue;
-import static org.testng.AssertJUnit.assertEquals;
+import static org.hamcrest.Matchers.*;
 
 
-public class UpdateClientPositiveTest {
+public class DeleteClientPositiveTest {
 
-    @Test(description = "Update client by Id")
-    public void updateClientTest() {
+    @Test(description = "Delete client by Id")
+    public void deleteClientTest() {
 
         String firstName = "Miguel";
         String lastName = "Oliveira";
@@ -57,26 +55,10 @@ public class UpdateClientPositiveTest {
         assertThat("Body should not be null", response2.body(), notNullValue());
 
 
-        //Fazer o update
-        String firstName2 = "Mike";
-        Client request2 = Client.builder()
-                .firstName(firstName2) //Vamos usar um nome diferente
-                .lastName(lastName)
-                .address(address)
-                .postalCode(postalCode)
-                .city(city)
-                .country(country)
-                .phoneNumber(phoneNumber)
-                .nif(nif)
-                .birthDate(birthDate)
-                .clientDate(clientDate)
-                .build();
-
-        Response<Client> response3 = updateClient(response.body().getId(), request2);
-        assertThat("Body should not be null", response3.body(), notNullValue());
-
-        //Comparar Firstnames
-        Client client2 = response3.body();
-        assertEquals(request2.getFirstName(), firstName2);
+        //Eliminar cliente
+        //System.out.println(response.body().getId());
+        Response<Client> response3 = deleteClient(response.body().getId());
+        //assertOk(response3);
+        assertThat("Body be null", response3.body(), nullValue()); //tem de ser nulo
     }
 }

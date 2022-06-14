@@ -1,4 +1,4 @@
-package api.generic;
+package api.integration;
 
 import api.mappings.generic.CreateGenericRequest;
 import okhttp3.ResponseBody;
