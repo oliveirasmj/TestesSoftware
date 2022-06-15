@@ -65,17 +65,17 @@ public class ClientByIdPositiveTest {
         assertThat("Body should not be null", response.body(), notNullValue());
 
         Client client = response.body();
-        assertThat(client.getId(), is(id));
-        assertThat(client.getFirstName(), is(firstName));
-        assertThat(client.getLastName(), is(lastName));
-        assertThat(client.getAddress(), is(address));
-        assertThat(client.getPostalCode(), is(postalCode));
-        assertThat(client.getCity(), is(city));
-        assertThat(client.getCountry(), is(country));
-        assertThat(client.getPhoneNumber(), is(phoneNumber));
-        assertThat(client.getNif(), is(nif));
-        assertThat(client.getBirthDate(), is(birthDate));
-        assertThat(client.getClientDate(), is(clientDate));
-        assertThat(client.getVehicles(), is(vehicles));
+        assertThat("id should be the same of the request", client.getId(), is(id));
+        assertThat("firstname is not the expected", client.getFirstName(), is(firstName));
+        assertThat("lastname is not the expected",client.getLastName(), is(lastName));
+        assertThat("address is not the expected", client.getAddress(), is(address));
+        assertThat("postalCode is not the expected", client.getPostalCode(), is(postalCode));
+        assertThat("city is not the expected", client.getCity(), is(city));
+        assertThat("country is not the expected", client.getCountry(), is(country));
+        assertThat("phone number  is not the expected", client.getPhoneNumber(), is(phoneNumber));
+        assertThat("nif is not the expected", client.getNif(), is(nif));
+        assertThat("birthdate is not the expected", client.getBirthDate(), is(birthDate));
+        assertThat("clientDate is not the expected", client.getClientDate(), is(clientDate));
+        assertThat("vehicles is not the expected", client.getVehicles(), is(vehicles));
     }
 }

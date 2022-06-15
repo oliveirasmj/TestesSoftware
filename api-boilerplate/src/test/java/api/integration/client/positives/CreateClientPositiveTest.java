@@ -18,10 +18,9 @@ import static org.hamcrest.Matchers.notNullValue;
 public class CreateClientPositiveTest {
 
     private Client client;
-    private Client client2;
 
-    @BeforeMethod
-    public void setupClient() {
+    @Test(description = "Create Client with success")
+    public void CreateClientPositiveTest() {
 
         String firstName = "Miguel";
         String lastName = "Oliveira";
@@ -47,38 +46,33 @@ public class CreateClientPositiveTest {
                 .clientDate(clientDate)
                 .build();
 
+        //Create client
         Response<Client> response = createClient(request);
         assertCreated(response);
         client = response.body();
 
-        assertThat("id should not be nul", client.getId(), notNullValue());
-        Response<Client> response2 = getClientById(client.getId());
-        assertOk(response2);
-        assertThat("Body should not be null", response2.body(), notNullValue());
+        //Get client by id
+        Response<Client> idClient = getClientById(client.getId());
+        assertOk(idClient);
+        client = idClient.body();
 
-        //Criar cliente 2
-        client2 = response.body();
-    }
 
-    @Test(description = "create client with success")
-    public void createClientTest() {
-        assertThat(client2.getId(), is(client.getId()));
-        assertThat(client2.getFirstName(), is(client.getFirstName()));
-        assertThat(client2.getLastName(), is(client.getLastName()));
-        assertThat(client2.getAddress(), is(client.getAddress()));
-        assertThat(client2.getPostalCode(), is(client.getPostalCode()));
-        assertThat(client2.getCity(), is(client.getCity()));
-        assertThat(client2.getCountry(), is(client.getCountry()));
-        assertThat(client2.getPhoneNumber(), is(client.getPhoneNumber()));
-        assertThat(client2.getNif(), is(client.getNif()));
-        assertThat(client2.getBirthDate(), is(client.getBirthDate()));
-        assertThat(client2.getClientDate(), is(client.getClientDate()));
+        assertThat("id should be the same of the request", client.getId(), notNullValue());
+        assertThat("firstname is not the expected", client.getFirstName(), is(firstName));
+        assertThat("lastname is not the expected", client.getLastName(), is(lastName));
+        assertThat("address is not the expected", client.getAddress(), is(address));
+        assertThat("postalCode is not the expected", client.getPostalCode(), is(postalCode));
+        assertThat("city is not the expected", client.getCity(), is(city));
+        assertThat("country is not the expected", client.getCountry(), is(country));
+        assertThat("phone number  is not the expected", client.getPhoneNumber(), is(phoneNumber));
+        assertThat("nif is not the expected", client.getNif(), is(nif));
+        assertThat("birthdate is not the expected", client.getBirthDate(), is(birthDate));
+        assertThat("clientDate is not the expected", client.getClientDate(), is(clientDate));
     }
 
     @AfterMethod()
     public void cleanUp(){
         deleteClient(client.getId());
-        deleteClient(client2.getId());
     }
 
 }

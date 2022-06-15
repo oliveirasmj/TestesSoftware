@@ -29,13 +29,13 @@ public class VehicleByIdPositiveTest {
         assertThat("Body should not be null", response.body(), notNullValue());
 
         Vehicle vehicle = response.body();
-        assertThat(vehicle.getId(), is(id));
-        assertThat(vehicle.getClient(), is(client));
-        assertThat(vehicle.getBrand(), is(brand));
-        assertThat(vehicle.getModel(), is(model));
-        assertThat(vehicle.getYear(), is(year));
-        assertThat(vehicle.getType(), is(type));
-        assertThat(vehicle.getPlate(), is(plate));
-        assertThat(vehicle.getActive(), is(active));
+        assertThat("id should be the same of the request", vehicle.getId(), is(id));
+        assertThat("client should be the same of the request", vehicle.getClient(), is(client));
+        assertThat("brand should be the same of the request", vehicle.getBrand(), is(brand));
+        assertThat("model should be the same of the request", vehicle.getModel(), is(model));
+        assertThat("year should be the same of the request", vehicle.getYear(), is(year));
+        assertThat("type should be the same of the request", vehicle.getType(), is(type));
+        assertThat("plate should be the same of the request", vehicle.getPlate(), is(plate));
+        assertThat("active should be the same of the request", vehicle.getActive(), is(active));
     }
 }

@@ -24,6 +24,6 @@ public interface ClientCalls {
     @DELETE(CLIENT_ID)
     Call<Client> deleteClient(@Path(ID) Integer clientId);
 
-    @PUT(CLIENT_ID)
-    Call<Client> updateClient(@Path(ID) Integer clientId, @Body Client client);
+    @PUT(CLIENT)
+    Call<Client> updateClient(@Body Client client);
 }

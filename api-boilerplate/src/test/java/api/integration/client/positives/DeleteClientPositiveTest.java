@@ -56,13 +56,13 @@ public class DeleteClientPositiveTest {
     @Test(description = "Delete client by Id")
     public void deleteClientTest() {
         assertThat("id should not be nul", client.getId(), notNullValue());
-        Response<Client> response2 = getClientById(client.getId());
-        assertOk(response2);
-        assertThat("Body should not be null", response2.body(), notNullValue());
+        Response<Client> idClient = getClientById(client.getId());
+        assertOk(idClient);
+        assertThat("Body should not be null", idClient.body(), notNullValue());
 
         //Eliminar cliente
-        Response<Client> response3 = deleteClient(client.getId());
-        assertThat("Body be null", response3.body(), nullValue()); //tem de ser nulo
+        Response<Client> responseDelete = deleteClient(client.getId());
+        assertThat("Body be null", responseDelete.body(), nullValue()); //tem de ser nulo
     }
 
     @AfterMethod()

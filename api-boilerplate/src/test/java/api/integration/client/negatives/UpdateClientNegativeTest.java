@@ -49,7 +49,7 @@ public class UpdateClientNegativeTest {
 
         //Fazer o update
         request.setPhoneNumber(9);
-        Response<Client> response2 = updateClient(response.body().getId(), request);
+        Response<Client> response2 = updateClient(request);
         ErrorResponse error = getErrorsResponse(response2);
 
         assertThat("Timestamp should not be null", error.getTimestamp(), notNullValue());
