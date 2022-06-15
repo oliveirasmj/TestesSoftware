@@ -2,6 +2,7 @@ package api.integration.client.positives;
 
 import api.mappings.Client;
 import api.mappings.Vehicle;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import retrofit2.Response;
 

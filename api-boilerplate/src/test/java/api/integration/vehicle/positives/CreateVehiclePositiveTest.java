@@ -1,11 +1,13 @@
 package api.integration.vehicle.positives;
 
 import api.mappings.Vehicle;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import retrofit2.Response;
 
-import static api.retrofit.Client.Vehicles.createVehicle;
-import static api.retrofit.Client.Vehicles.getVehicleById;
+import static api.retrofit.Client.Clients.deleteClient;
+import static api.retrofit.Vehicle.Vehicles.*;
 import static api.validators.ResponseValidator.assertCreated;
 import static api.validators.ResponseValidator.assertOk;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -14,11 +16,13 @@ import static org.hamcrest.Matchers.notNullValue;
 
 public class CreateVehiclePositiveTest {
 
-    @Test(description = "create vehicle with success")
-    public void createVehicleTest() {
+    private Vehicle vehicle;
+    private Vehicle vehicle2;
 
+    @BeforeMethod
+    public void setupClient() {
         String brand = "VW";
-        String model = "Golf 4";
+        String model = "Golf 8";
         Integer year = 1999;
         String type = "Hatchback";
         String plate = "PI-88-60";
@@ -37,17 +41,20 @@ public class CreateVehiclePositiveTest {
         assertCreated(response);
         assertThat("Body should not be null", response.body(), notNullValue());
 
-        //Criar cliente com os dados enviados
-        Vehicle vehicle = response.body();
+        //Criar carro com os dados enviados
+        vehicle = response.body();
 
         assertThat("id should not be nul", vehicle.getId(), notNullValue());
         Response<Vehicle> response2 = getVehicleById(vehicle.getId());
         assertOk(response2);
         assertThat("Body should not be null", response2.body(), notNullValue());
 
-        //Criar cliente 2 com os dados da BD
-        Vehicle vehicle2 = response.body();
+        //Criar carro 2 com os dados da BD
+        vehicle2 = response.body();
+    }
 
+    @Test(description = "create vehicle with success")
+    public void createVehicleTest() {
         assertThat(vehicle2.getId(), is(vehicle.getId()));
         assertThat(vehicle2.getBrand(), is(vehicle.getBrand()));
         assertThat(vehicle2.getModel(), is(vehicle.getModel()));
@@ -55,5 +62,11 @@ public class CreateVehiclePositiveTest {
         assertThat(vehicle2.getType(), is(vehicle.getType()));
         assertThat(vehicle2.getPlate(), is(vehicle.getPlate()));
         assertThat(vehicle2.getActive(), is(vehicle.getActive()));
+    }
+
+    @AfterMethod()
+    public void cleanUp(){
+        deleteVehicle(vehicle.getId());
+        deleteVehicle(vehicle2.getId());
     }
 }

@@ -3,10 +3,7 @@ package api.calls;
 import api.mappings.Client;
 import api.mappings.Vehicle;
 import retrofit2.Call;
-import retrofit2.http.Body;
-import retrofit2.http.GET;
-import retrofit2.http.POST;
-import retrofit2.http.Path;
+import retrofit2.http.*;
 
 import java.util.List;
 
@@ -24,4 +21,7 @@ public interface VehicleCalls {
 
     @POST(VEHICLE)
     Call<Vehicle> createVehicle(@Body Vehicle vehicle);
+
+    @DELETE(VEHICLE_ID)
+    Call<Vehicle> deleteVehicle(@Path(ID) Integer vehicleId);
 }

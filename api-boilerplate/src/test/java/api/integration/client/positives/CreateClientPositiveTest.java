@@ -1,13 +1,14 @@
 package api.integration.client.positives;
 
 import api.mappings.Client;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import retrofit2.Response;
 
 import java.time.LocalDate;
 
-import static api.retrofit.Client.Clients.createClient;
-import static api.retrofit.Client.Clients.getClientById;
+import static api.retrofit.Client.Clients.*;
 import static api.validators.ResponseValidator.assertCreated;
 import static api.validators.ResponseValidator.assertOk;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -16,8 +17,11 @@ import static org.hamcrest.Matchers.notNullValue;
 
 public class CreateClientPositiveTest {
 
-    @Test(description = "create client with success")
-    public void createClientTest() {
+    private Client client;
+    private Client client2;
+
+    @BeforeMethod
+    public void setupClient() {
 
         String firstName = "Miguel";
         String lastName = "Oliveira";
@@ -45,19 +49,19 @@ public class CreateClientPositiveTest {
 
         Response<Client> response = createClient(request);
         assertCreated(response);
-        assertThat("Body should not be null", response.body(), notNullValue());
-
-        //Criar cliente com os dados enviados
-        Client client = response.body();
+        client = response.body();
 
         assertThat("id should not be nul", client.getId(), notNullValue());
         Response<Client> response2 = getClientById(client.getId());
         assertOk(response2);
         assertThat("Body should not be null", response2.body(), notNullValue());
 
-        //Criar cliente 2 com os dados da BD
-        Client client2 = response.body();
+        //Criar cliente 2
+        client2 = response.body();
+    }
 
+    @Test(description = "create client with success")
+    public void createClientTest() {
         assertThat(client2.getId(), is(client.getId()));
         assertThat(client2.getFirstName(), is(client.getFirstName()));
         assertThat(client2.getLastName(), is(client.getLastName()));
@@ -70,4 +74,11 @@ public class CreateClientPositiveTest {
         assertThat(client2.getBirthDate(), is(client.getBirthDate()));
         assertThat(client2.getClientDate(), is(client.getClientDate()));
     }
+
+    @AfterMethod()
+    public void cleanUp(){
+        deleteClient(client.getId());
+        deleteClient(client2.getId());
+    }
+
 }

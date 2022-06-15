@@ -1,6 +1,8 @@
 package api.integration.client.positives;
 
 import api.mappings.Client;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import retrofit2.Response;
 
@@ -15,9 +17,10 @@ import static org.hamcrest.Matchers.*;
 
 public class DeleteClientPositiveTest {
 
-    @Test(description = "Delete client by Id")
-    public void deleteClientTest() {
+    private Client client;
 
+    @BeforeMethod
+    public void setupClient() {
         String firstName = "Miguel";
         String lastName = "Oliveira";
         String address = "Rua da Esquina";
@@ -47,18 +50,23 @@ public class DeleteClientPositiveTest {
         assertThat("Body should not be null", response.body(), notNullValue());
 
         //Criar cliente com os dados enviados
-        Client client = response.body();
+        client = response.body();
+    }
 
+    @Test(description = "Delete client by Id")
+    public void deleteClientTest() {
         assertThat("id should not be nul", client.getId(), notNullValue());
         Response<Client> response2 = getClientById(client.getId());
         assertOk(response2);
         assertThat("Body should not be null", response2.body(), notNullValue());
 
-
         //Eliminar cliente
-        //System.out.println(response.body().getId());
-        Response<Client> response3 = deleteClient(response.body().getId());
-        //assertOk(response3);
+        Response<Client> response3 = deleteClient(client.getId());
         assertThat("Body be null", response3.body(), nullValue()); //tem de ser nulo
+    }
+
+    @AfterMethod()
+    public void cleanUp(){
+        deleteClient(client.getId());
     }
 }

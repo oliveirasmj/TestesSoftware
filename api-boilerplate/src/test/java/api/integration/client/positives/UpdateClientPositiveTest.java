@@ -1,12 +1,16 @@
 package api.integration.client.positives;
 
 import api.mappings.Client;
+import api.mappings.generic.ErrorResponse;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import retrofit2.Response;
 
 import java.time.LocalDate;
 
 import static api.retrofit.Client.Clients.*;
+import static api.retrofit.Client.Errors.getErrorsResponse;
 import static api.validators.ResponseValidator.assertCreated;
 import static api.validators.ResponseValidator.assertOk;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -16,6 +20,9 @@ import static org.testng.AssertJUnit.assertEquals;
 
 
 public class UpdateClientPositiveTest {
+
+    private Client client;
+    private Client client2;
 
     @Test(description = "Update client by Id")
     public void updateClientTest() {
@@ -49,7 +56,7 @@ public class UpdateClientPositiveTest {
         assertThat("Body should not be null", response.body(), notNullValue());
 
         //Criar cliente com os dados enviados
-        Client client = response.body();
+        client = response.body();
 
         assertThat("id should not be nul", client.getId(), notNullValue());
         Response<Client> response2 = getClientById(client.getId());
@@ -76,7 +83,13 @@ public class UpdateClientPositiveTest {
         assertThat("Body should not be null", response3.body(), notNullValue());
 
         //Comparar Firstnames
-        Client client2 = response3.body();
+        client2 = response3.body();
         assertEquals(request2.getFirstName(), firstName2);
+    }
+
+    @AfterMethod()
+    public void cleanUp(){
+        deleteClient(client.getId());
+        deleteClient(client2.getId());
     }
 }

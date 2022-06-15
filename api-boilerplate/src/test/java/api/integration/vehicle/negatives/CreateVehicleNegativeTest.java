@@ -6,7 +6,7 @@ import org.testng.annotations.Test;
 import retrofit2.Response;
 
 import static api.retrofit.Client.Errors.getErrorsResponse;
-import static api.retrofit.Client.Vehicles.createVehicle;
+import static api.retrofit.Vehicle.Vehicles.createVehicle;
 import static api.validators.ResponseValidator.*;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;

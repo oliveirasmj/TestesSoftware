@@ -1,4 +1,4 @@
-package api.retrofit.Client;
+package api.retrofit.Vehicle;
 
 import api.calls.ClientCalls;
 import api.calls.VehicleCalls;
@@ -28,5 +28,10 @@ public class Vehicles {
     @SneakyThrows
     public static Response<Vehicle> createVehicle(Vehicle vehicle) {
         return vehicleCalls.createVehicle(vehicle).execute();
+    }
+
+    @SneakyThrows
+    public static Response<Vehicle> deleteVehicle(Integer vehicleId) {
+        return vehicleCalls.deleteVehicle(vehicleId).execute();
     }
 }
