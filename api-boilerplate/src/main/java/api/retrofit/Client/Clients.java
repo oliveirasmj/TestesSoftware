@@ -34,7 +34,7 @@ public class Clients {
     }
 
     @SneakyThrows
-    public static Response<Client> updateClient(Client client) {
-        return clientCalls.updateClient(client).execute();
+    public static Response<Client> updateClient(Integer clientId, Client client) {
+        return clientCalls.updateClient(clientId, client).execute();
     }
 }

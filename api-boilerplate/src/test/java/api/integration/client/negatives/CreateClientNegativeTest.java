@@ -2,12 +2,14 @@ package api.integration.client.negatives;
 
 import api.mappings.Client;
 import api.mappings.generic.ErrorResponse;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 import retrofit2.Response;
 
 import java.time.LocalDate;
 
 import static api.retrofit.Client.Clients.createClient;
+import static api.retrofit.Client.Clients.deleteClient;
 import static api.retrofit.Client.Errors.getErrorsResponse;
 import static api.validators.ResponseValidator.*;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -15,6 +17,8 @@ import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.notNullValue;
 
 public class CreateClientNegativeTest {
+
+    private Client client;
 
     @Test(description = "create client with invalid nif")
     public void createClientErrorNifTest() {
@@ -44,6 +48,7 @@ public class CreateClientNegativeTest {
                 .build();
 
         Response<Client> response = createClient(request);
+        client = response.body();
         assertBadRequest(response);
         ErrorResponse error = getErrorsResponse(response);
 

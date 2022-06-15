@@ -14,7 +14,7 @@ import static org.hamcrest.Matchers.notNullValue;
 
 public class VehicleByIdNegativeTest {
 
-    @Test(description = "Get vehicle by Id")
+    @Test(description = "Get vehicle with invalid Id")
     public void getVehicleNonExistentIdTest() {
         Integer id = 0;
 
