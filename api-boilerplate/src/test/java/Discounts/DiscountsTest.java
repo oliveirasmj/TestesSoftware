@@ -1,13 +1,11 @@
 package Discounts;
 
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 import java.time.LocalDate;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.testng.Assert.assertEquals;
 
 class DiscountsTest {
     final int x = 2+10-3;
