@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Generic.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">api-MiguelOliveira_83816</a> &gt; <a href="index.source.html" class="el_package">api.retrofit.generic</a> &gt; <span class="el_source">Generic.java</span></div><h1>Generic.java</h1><pre class="source lang-java linenums">package api.retrofit.generic;
+
+import api.calls.GenericCalls;
+import api.mappings.generic.CreateGenericRequest;
+import api.retrofit.RetrofitBuilder;
+import lombok.NoArgsConstructor;
+import okhttp3.ResponseBody;
+import retrofit2.Response;
+
+import java.io.IOException;
+
+import static lombok.AccessLevel.PRIVATE;
+
+@NoArgsConstructor(access = PRIVATE)
+public class Generic {
+
+<span class="nc" id="L17">    private static final GenericCalls genericCalls = new RetrofitBuilder().getRetrofit().create(GenericCalls.class);</span>
+
+    public static Response&lt;ResponseBody&gt; getGenericCall() throws IOException {
+<span class="nc" id="L20">        return genericCalls.getGenericCall().execute();</span>
+    }
+
+    public static Response&lt;ResponseBody&gt; createGenericCall(CreateGenericRequest createGenericRequest) throws IOException {
+<span class="nc" id="L24">        return genericCalls.createGenericCall(createGenericRequest).execute();</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

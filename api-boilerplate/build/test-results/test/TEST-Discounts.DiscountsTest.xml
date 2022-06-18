@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Discounts.DiscountsTest" tests="17" skipped="0" failures="0" errors="0" timestamp="2022-06-18T11:05:30" hostname="MATEBOOKD14" time="0.394">
+  <properties/>
+  <testcase name="[1] -5, 0" classname="Discounts.DiscountsTest" time="0.165"/>
+  <testcase name="[2] 0, 0" classname="Discounts.DiscountsTest" time="0.004"/>
+  <testcase name="[3] 4, 0" classname="Discounts.DiscountsTest" time="0.003"/>
+  <testcase name="[4] 5, 2" classname="Discounts.DiscountsTest" time="0.004"/>
+  <testcase name="[5] 6, 5" classname="Discounts.DiscountsTest" time="0.004"/>
+  <testcase name="[6] 8, 7" classname="Discounts.DiscountsTest" time="0.004"/>
+  <testcase name="[7] 9, 8" classname="Discounts.DiscountsTest" time="0.003"/>
+  <testcase name="[8] 10, 2" classname="Discounts.DiscountsTest" time="0.002"/>
+  <testcase name="[9] 11, 6" classname="Discounts.DiscountsTest" time="0.002"/>
+  <testcase name="[1] VW, 3" classname="Discounts.DiscountsTest" time="0.003"/>
+  <testcase name="[2] Tesla, 5" classname="Discounts.DiscountsTest" time="0.002"/>
+  <testcase name="[3] BMW, 7" classname="Discounts.DiscountsTest" time="0.003"/>
+  <testcase name="[4] Mercedes, 0" classname="Discounts.DiscountsTest" time="0.004"/>
+  <testcase name="[1] 5, VW, 2022-06-16, 5" classname="Discounts.DiscountsTest" time="0.081"/>
+  <testcase name="[2] 50, VW, 2022-06-16, 25" classname="Discounts.DiscountsTest" time="0.003"/>
+  <testcase name="[3] 50, VW, 2022-06-17, 25" classname="Discounts.DiscountsTest" time="0.003"/>
+  <testcase name="[4] 5, VW, 2022-06-17, 10" classname="Discounts.DiscountsTest" time="0.003"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
